@@ -26,20 +26,20 @@ module.exports.loop = function () {
     var repairers  = _.filter(Game.creeps, (creep) => creep.memory.role == "repairer");
     var janitors  = _.filter(Game.creeps, (creep) => creep.memory.role == "janitor");
 
-    if(harvesters.length < 5){
-        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE, MOVE, CARRY, CARRY], "Harvester" + Game.time, {memory:{role:'harvester', working:false}});
+    if(harvesters.length < 4){
+        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE, CARRY], "Harvester" + Game.time, {memory:{role:'harvester', working:false}});
     }
-    if(upgraders.length < 5){
-        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE, MOVE, CARRY, CARRY], "Upgrader" + Game.time, {memory:{role:'upgrader', working:false}});
+    else if(upgraders.length < 5){
+        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, WORK, MOVE, CARRY], "Upgrader" + Game.time, {memory:{role:'upgrader', working:false}});
     }
-    if(builders.length < 5){
-        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE, MOVE, CARRY, CARRY], "Builder" + Game.time, {memory:{role:'builder', working:false}});
+    else if(builders.length < 5){
+        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, WORK, MOVE, CARRY], "Builder" + Game.time, {memory:{role:'builder', working:false}});
     }
-    if(builders.length < 3){
-        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE, MOVE, CARRY, CARRY], "repairer" + Game.time, {memory:{role:'repairer', working:false, repairing:false}});
+    else if(builders.length < 4){
+        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, WORK, MOVE, CARRY], "repairer" + Game.time, {memory:{role:'repairer', working:false, repairing:false}});
     }
-    if(janitors.length < 1){
-        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE, MOVE, CARRY, CARRY], "Janitor" + Game.time, {memory:{role:'builder', working:false}});
+    else if(janitors.length < 0){
+        Game.spawns["Spawn1"].spawnCreep([WORK, WORK, MOVE, MOVE, MOVE, CARRY], "Janitor" + Game.time, {memory:{role:'janitor', working:false}});
     }
     
     for(var name in Memory.creeps){

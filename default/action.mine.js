@@ -1,6 +1,14 @@
 var actionMine = {
     /** @param {Creep} creep **/
     run:function(creep){
+        if(creep.store.getFreeCapacity() <= 0)
+        {
+            creep.memory.working = true
+        }
+        if(creep.store.energy <= 0){
+            
+            creep.memory.working = false;
+        }
         if(creep.store.getFreeCapacity() > 0 && creep.memory.working == false){
             var sources = creep.pos.findClosestByRange(FIND_SOURCES)
             creep.say("⛏")
