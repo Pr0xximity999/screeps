@@ -6,13 +6,13 @@ var roleBuilder = {
         if(!actionMine.run(creep)){
             if (!creep.memory.repairing && creep.store.getFreeCapacity() == 0) {
                 creep.memory.repairing = true;
-                creep.say("🛠")
             }
             const targets = creep.room.find(FIND_STRUCTURES, {
                 filter: object => object.hits < object.hitsMax
             });
-    
+            
             if (creep.memory.repairing) {
+                creep.say("🛠")
                 targets.sort((a, b) => a.hits - b.hits);
                 if (targets.length > 0) {
                     top5targets = targets.slice(0, 5);

@@ -9,6 +9,10 @@ var roleBuilder = {
                 creep.memory.working = false
             }
             var site = creep.pos.findClosestByRange(FIND_CONSTRUCTION_SITES)
+            if(!site){
+                creep.say("Idle")
+                creep.moveTo(18, 23)
+            }
             if(creep.build(site) == ERR_NOT_IN_RANGE){
                 creep.moveTo(site, { visualizePathStyle: { stroke: '#00FFFF,' } }); 
             }

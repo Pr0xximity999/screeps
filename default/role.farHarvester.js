@@ -1,6 +1,6 @@
-var actionMine = require("action.mine")
+var actionFarMine = require("action.farMine")
 
-var roleHarvester = {
+var roleFarHarvester = {
     /** @param {Creep} creep **/
     run : function(creep){
         if(!actionMine.run(creep)){
@@ -22,4 +22,4 @@ var roleHarvester = {
         }
     }
 }
-module.exports = roleHarvester;
+module.exports = roleFarHarvester;
